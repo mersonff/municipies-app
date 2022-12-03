@@ -1,0 +1,59 @@
+
+version: "3.8"
+
+services:
+  postgres:
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: postgres
+    image: postgres:14-alpine
+    ports:
+      - 5433:5433
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    container_name: redis-municipies
+    image: redis:latest
+    ports:
+      - 9001:9001
+    volumes:
+      - redis-data:/data
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    env_file: .env
+    environment:
+      RAILS_ENV: production
+    restart: always
+    entrypoint: ./entrypoints/docker-entrypoint.sh
+
+  app-migrations:
+    container_name: app-migrations
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app
+    env_file: .env
+    environment:
+      RAILS_ENV: production
+    entrypoint: ./entrypoints/setup-db.sh
+
+volumes:
+  postgres-data:
+  redis-data:
+  app:

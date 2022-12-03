@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 55
+
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>_development
+
+test: &test
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>_test
+
+production:
+  url: <%= ENV['REMOTE_DATABASE_URL'] %>
+
