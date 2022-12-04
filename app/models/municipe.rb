@@ -9,4 +9,10 @@ class Municipe < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :cns, cns: true
   validates :birth_date, pass_date: true
+
+  scope :ordered, -> { order(:name) }
+
+  def self.translated_statuses
+    statuses.keys.map { |status| [I18n.t("activerecord.attributes.municipe.statuses.#{status}"), status] }
+  end
 end

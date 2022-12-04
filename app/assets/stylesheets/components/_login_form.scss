@@ -1,0 +1,40 @@
+.form-login {
+  background:var(--color-background);
+  margin-top: var(--space-xxxxl);
+  margin: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-large);
+  padding: var(--space-xxl) ;
+  padding-right: var(--space-s);
+  padding-left: var(--space-s);
+  width: 50%;
+
+  @include media(tabletAndUp) {
+    padding-right: var(--space-xxxxl);
+    padding-left: var(--space-xxxxl);
+    // max-width: 60rem;
+  }
+
+  h2 {
+    font-size: var(--font-size-xxl);
+    font-weight: bold;
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .form-inputs
+  .form-actions {
+  width: 100%;
+  padding: var(--space-m) var(--space-l);
+  margin: var(--space-s) 0;
+  display: inline-block;
+  }
+
+  .form__group {
+    padding-bottom: var(--space-l);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

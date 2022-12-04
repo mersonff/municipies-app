@@ -1,0 +1,12 @@
+<%= turbo_frame_tag municipe do %>
+  <div class="quote">
+    <%= link_to municipe.name,
+                municipe_path(municipe),
+                data: { turbo_frame: "_top" } %>
+    <div class="municipe__actions">
+      <%= link_to "Edit",
+                  edit_municipe_path(municipe),
+                  class: "btn btn--light" %>
+    </div>
+  </div>
+<% end %>

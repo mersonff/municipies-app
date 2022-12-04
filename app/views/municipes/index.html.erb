@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="header">
+    <h1><%= I18n.t('activerecord.models.municipe.other') %></h1>
+    <%= link_to I18n.t('helpers.submit.municipe.create'),
+                new_municipe_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Municipe.new) } %>
+  </div>
+
+  <%= turbo_frame_tag Municipe.new %>
+
+  <%= turbo_frame_tag "municipes" do %>
+    <br>
+    <%= render @municipes %>
+  <% end %>
+</div>

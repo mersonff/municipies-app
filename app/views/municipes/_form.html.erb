@@ -1,0 +1,72 @@
+<%= simple_form_for municipe, html: { class: "municipe form" } do |f| %>
+  <% if municipe.errors.any? %>
+    <div class="error-message">
+      <% municipe.errors.full_messages.each do |message| %>
+        <p><%= message.capitalize %></p>
+      <% end%>
+    </div>
+  <% end %>
+
+  <% if municipe.persisted? %>
+    <div class="">
+      <%= image_tag(municipe.photo, size: '150x150') %>
+    </div>
+  <% end %>
+  <h1>Informações Pessoais</h1>
+  <br>
+  <div class="yui3-g">
+    <div class="yui3-u-1-2">
+      <%= f.input :name, input_html: { autofocus: true } %>
+    </div>
+
+    <div class="yui3-u-1-4">
+      <%= f.input :cpf %>
+    </div>
+
+    <div class="yui3-u-1-4">
+      <%= f.input :cns %>
+    </div>
+  </div>
+
+  <div class="yui3-g">
+    <div class="yui3-u-1-8">
+      <% if municipe.persisted? %>
+        <%= f.input :birth_date, as: :string, input_html: { value: municipe.br_birth_date } %>
+      <% else %>
+        <%= f.input :birth_date, as: :string %>
+      <% end %>
+    </div>
+
+    <div class="yui3-u-1-2">
+      <%= f.input :email, as: :email %>
+    </div>
+
+    <div class="yui3-u-1-5">
+      <%= f.input :phone, as: :tel %>
+    </div>
+
+    <div class="yui3-u-1-6">
+      <%= f.input :status, as: :select, collection: Municipe.translated_statuses, disabled: f.object.new_record?, selected: f.object.status %>
+    </div>
+  </div>
+
+  <%= f.input :photo, as: :file %>
+
+  <br>
+  <%= link_to "Cancel",  municipes_path, class: "btn btn--light" %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>
+
+<script>
+  $(function(){
+    $( "#municipe_birth_date" ).datepicker();
+
+    var im = new Inputmask('999.999.999-99');
+    var selector = $('#municipe_cpf');
+    im.mask(selector);
+
+    Inputmask('999999999999999').mask($('#municipe_cns'));
+
+    Inputmask('+55 (99) 99999-9999').mask($('#municipe_phone'));
+  });
+</script>

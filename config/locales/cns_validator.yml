@@ -1,8 +1,8 @@
 pt-BR:
-  activemodel:
+  activerecord:
     errors:
       models:
-        cns_validatable:
+        municipe:
           attributes:
             cns:
               cns_invalid: Número de cartão inválido

@@ -1,0 +1,28 @@
+pt-BR:
+  simple_form:
+    placeholders:
+      municipe:
+        name: Nome
+        cpf: CPF
+        cns: CNS
+        birth_date: Data de Nascimento
+        email: E-mail
+        photo: Foto
+        status: Status
+        phone: Telefone
+    labels:
+      municipe:
+        name: Nome
+        cpf: CPF
+        cns: CNS
+        birth_date: Data de Nascimento
+        email: E-mail
+        photo: Foto
+        status: Status
+        phone: Telefone
+
+  helpers:
+    submit:
+      municipe:
+        create: Novo Munícipe
+        update: Atualizar Munícipe
