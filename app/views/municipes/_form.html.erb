@@ -15,10 +15,11 @@
   <h1>Informações Pessoais</h1>
   <br>
   <div class="yui3-g">
-    <div class="yui3-u-1-2">
+    <div class='yui3-u-1'>
       <%= f.input :name, input_html: { autofocus: true } %>
     </div>
-
+  </div>
+  <div class="yui3-g">
     <div class="yui3-u-1-4">
       <%= f.input :cpf %>
     </div>
@@ -26,10 +27,8 @@
     <div class="yui3-u-1-4">
       <%= f.input :cns %>
     </div>
-  </div>
 
-  <div class="yui3-g">
-    <div class="yui3-u-1-8">
+    <div class="yui3-u-1-5">
       <% if municipe.persisted? %>
         <%= f.input :birth_date, as: :string, input_html: { value: municipe.br_birth_date } %>
       <% else %>
@@ -37,20 +36,31 @@
       <% end %>
     </div>
 
-    <div class="yui3-u-1-2">
-      <%= f.input :email, as: :email %>
-    </div>
-
     <div class="yui3-u-1-5">
       <%= f.input :phone, as: :tel %>
     </div>
 
-    <div class="yui3-u-1-6">
+    <div class="yui3-u-1-12" style="width: 10%">
       <%= f.input :status, as: :select, collection: Municipe.translated_statuses, disabled: f.object.new_record?, selected: f.object.status %>
     </div>
   </div>
 
-  <%= f.input :photo, as: :file %>
+  <div class="yui3-g">
+    <div class="yui3-u-1-2">
+      <%= f.input :email, as: :email %>
+    </div>
+
+    <div class="yui3-u-1-2">
+      <%= f.input :photo, as: :file %>
+    </div>
+  </div>
+
+  <br>
+  <h1>Endereço</h1>
+
+  <%= f.fields_for :address do |address_form| %>
+    <%= render 'addresses/address', f: address_form %>
+  <% end %>
 
   <br>
   <%= link_to "Cancel",  municipes_path, class: "btn btn--light" %>
@@ -59,14 +69,40 @@
 
 <script>
   $(function(){
-    $( "#municipe_birth_date" ).datepicker();
+    var $cpf = $('#municipe_cpf'),
+        $cns = $('#municipe_cns'),
+        $birth_date = $('#municipe_birth_date'),
+        $phone = $('#municipe_phone'),
+        $email = $('#municipe_email'),
+        $zipcode = $('#municipe_address_attributes_zipcode');
+    
+    $birth_date.datepicker();
 
-    var im = new Inputmask('999.999.999-99');
-    var selector = $('#municipe_cpf');
-    im.mask(selector);
+    Inputmask('999.999.999-99').mask($cpf);
 
-    Inputmask('999999999999999').mask($('#municipe_cns'));
+    Inputmask('999999999999999').mask($cns);
 
-    Inputmask('+55 (99) 99999-9999').mask($('#municipe_phone'));
+    Inputmask('+55 (99) 99999-9999').mask($phone);
+
+    Inputmask('99999-999').mask($zipcode);
+
+    $zipcode.blur(function(){
+      var zipcode = $(this).val().replace('_', '').replace('-', '');
+      if(zipcode.length == 8){
+        $.ajax({
+          url: 'https://viacep.com.br/ws/' + zipcode + '/json/',
+          dataType: 'json',
+          success: function(data){
+            $('#municipe_address_attributes_street').val(data.logradouro);
+            $('#municipe_address_attributes_neighborhood').val(data.bairro);
+            $('#municipe_address_attributes_city').val(data.localidade);
+            $('#municipe_address_attributes_uf').val(data.uf);
+            $('#municipe_address_attributes_ibge_code').val(data.ibge);
+          }
+        });
+      } else {
+        alert('CEP inválido');
+      }
+    });
   });
 </script>

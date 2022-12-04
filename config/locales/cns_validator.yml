@@ -7,3 +7,11 @@ pt-BR:
             cns:
               cns_invalid: Número de cartão inválido
               should_have_exactily_fifteen_characters: Deve ter exatamente 15 caractéres
+  activemodel:
+    errors:
+      models:  
+        cns_validatable:
+          attributes:
+            cns:
+              cns_invalid: Número de cartão inválido
+              should_have_exactily_fifteen_characters: Deve ter exatamente 15 caractéres

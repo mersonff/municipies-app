@@ -1,6 +1,10 @@
 class Municipe < ApplicationRecord
   has_one_attached :photo
 
+  has_one :address, dependent: :destroy
+
+  accepts_nested_attributes_for :address
+
   enum status: { active: 0, inactive: 1 }, _default: :active
 
   validates :name, :cpf, :cns, :email, :birth_date, :phone, :status, :photo, presence: true

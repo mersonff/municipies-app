@@ -18,3 +18,11 @@ pt-BR:
         statuses:
           active: "Ativo"
           inactive: "Inativo"
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE

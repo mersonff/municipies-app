@@ -10,6 +10,14 @@ pt-BR:
         photo: Foto
         status: Status
         phone: Telefone
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE
     labels:
       municipe:
         name: Nome
@@ -20,9 +28,19 @@ pt-BR:
         photo: Foto
         status: Status
         phone: Telefone
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE
 
   helpers:
     submit:
       municipe:
-        create: Novo Munícipe
-        update: Atualizar Munícipe
+        new: Novo Munícipe
+        edit: Editar
+        create: Salvar
+        update: Atualizar
