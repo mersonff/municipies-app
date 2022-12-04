@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        pass_date: "deve ser uma data passada"
+        invalid_cpf: "deve ser um CPF válido"
