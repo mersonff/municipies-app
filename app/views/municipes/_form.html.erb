@@ -1,11 +1,5 @@
 <%= simple_form_for municipe, html: { class: "municipe form" } do |f| %>
-  <% if municipe.errors.any? %>
-    <div class="error-message">
-      <% municipe.errors.full_messages.each do |message| %>
-        <p><%= message.capitalize %></p>
-      <% end%>
-    </div>
-  <% end %>
+  <%= form_error_notification(municipe) %>
 
   <% if municipe.persisted? %>
     <div class="">

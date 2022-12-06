@@ -11,6 +11,7 @@
 
   <%= turbo_frame_tag "municipes" do %>
     <br>
+    <%= render "municipes/empty_state" %>
     <%= render @municipes %>
   <% end %>
 </div>
