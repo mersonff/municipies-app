@@ -19,6 +19,7 @@ class MunicipesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to municipes_path, notice: "municipe was successfully created." }
         format.turbo_stream
+        TwilioMessenger.new("Olá, #{@municipe.name}, seu cadastro foi realizado com sucesso!", @municipe.phone).call
       end
     else
       render :new, status: :unprocessable_entity
@@ -30,6 +31,8 @@ class MunicipesController < ApplicationController
   def update
     if @municipe.update(municipe_params)
       redirect_to municipes_path, notice: "municipe was successfully updated."
+      byebug
+      TwilioMessenger.new("Olá, #{@municipe.name}, seu cadastro foi atualizado com sucesso!", @municipe.phone).call
     else
       render :edit, status: :unprocessable_entity
     end

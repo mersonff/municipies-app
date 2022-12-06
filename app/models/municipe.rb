@@ -16,7 +16,20 @@ class Municipe < ApplicationRecord
 
   scope :ordered, -> { order(:name) }
 
+  after_create :send_welcome_email
+  after_save :send_info_changed_email
+
   def self.translated_statuses
     statuses.keys.map { |status| [I18n.t("activerecord.attributes.municipe.statuses.#{status}"), status] }
+  end
+
+  private
+
+  def send_welcome_email
+    MunicipeMailer.with(municipe: self).welcome.deliver_later
+  end
+
+  def send_info_changed_email
+    MunicipeMailer.with(municipe: self).info_changed.deliver_later
   end
 end

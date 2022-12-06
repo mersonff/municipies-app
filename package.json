@@ -8,7 +8,8 @@
     "inputmask": "^5.0.7",
     "jquery": "^3.6.1",
     "jquery-mask-plugin": "^1.14.16",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "node": "^16.13.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
