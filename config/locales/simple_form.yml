@@ -1,0 +1,47 @@
+pt-BR:
+  simple_form:
+    placeholders:
+      municipe:
+        name: Nome
+        cpf: CPF
+        cns: CNS
+        birth_date: Data de Nascimento
+        email: E-mail
+        photo: Foto
+        status: Status
+        phone: Telefone
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE
+    labels:
+      municipe:
+        name: Nome
+        cpf: CPF
+        cns: CNS
+        birth_date: Data de Nascimento
+        email: E-mail
+        photo: Foto
+        status: Status
+        phone: Telefone
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE
+
+  helpers:
+    submit:
+      municipe:
+        new: Novo Munícipe
+        edit: Editar
+        create: Salvar
+        update: Atualizar
+        new_title: Crie um novo agora

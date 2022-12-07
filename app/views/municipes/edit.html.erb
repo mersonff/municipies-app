@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to municipe"), municipe_path(@municipe) %>
+
+  <div class="header">
+    <h1>Edit municipe</h1>
+  </div>
+
+  <%= turbo_frame_tag @municipe do %>
+    <%= render "form", municipe: @municipe %>
+  <% end %>
+</main>

@@ -1,0 +1,27 @@
+.form {
+  &__input {
+    display: block;
+    width: 100%;
+    padding: var(--space-xxs) var(--space-xs);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: box-shadow 250ms;
+
+    &:focus {
+      box-shadow: 0 0 0 2px var(--color-glint);
+    }
+
+    &--invalid {
+      border-color: var(--color-primary);
+    }
+  }
+}
+
+.yui3-g {
+  margin-bottom: 5px;
+}
+
+.yui3-u-1-2, .yui3-u-1-4, .yui3-u-1-5, .yui3-u-1-6, .yui3-u-1-8 {
+  padding-right: 5px;
+}

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag municipe do %>
+  <br>
+  <div class="quote">
+    <%= link_to municipe.name,
+                edit_municipe_path(municipe) %>
+
+    <div class="municipe__actions">
+      <%= link_to I18n.t('helpers.submit.municipe.edit'),
+                  edit_municipe_path(municipe),
+                  class: "btn btn--light" %>
+    </div>
+  </div>
+<% end %>

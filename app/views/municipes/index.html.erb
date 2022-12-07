@@ -1,0 +1,22 @@
+<%= turbo_stream_from "municipes" %>
+
+<div class="container">
+<%= form_with(url: municipes_path, method: "GET", data: { turbo_frame: "municipes", turbo_action: "advance" }) do |form| %>
+    <%= form.text_field :query, placeholder: 'Por nome' %>
+    <%= form.submit 'Procurar', name: nil, class: "btn btn--primary" %>
+  <% end %>
+  <div class="header">
+    <h1><%= I18n.t('activerecord.models.municipe.other') %></h1>
+    <%= link_to I18n.t('helpers.submit.municipe.new'),
+                new_municipe_path,
+                class: "btn btn--primary",
+                data: { turbo_frame: dom_id(Municipe.new) } %>
+  </div>
+
+  <%= turbo_frame_tag Municipe.new %>
+
+  <%= turbo_frame_tag "municipes" do %>
+    <%= render "municipes/empty_state" %>
+    <%= render @municipes %>
+  <% end %>
+</div>

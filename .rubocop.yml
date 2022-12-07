@@ -11,7 +11,15 @@ AllCops:
     - .simplecov
     - tmp/**/*
     - vendor/**/*
+    - node_modules/**/*
 
+Metrics/BlockLength:
+  Enabled: false
+  AllowedMethods:
+    - describe
+    - context
+    - it
+    
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 

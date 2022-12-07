@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+require 'sidekiq/web'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+
+  root to: 'municipes#index'
+
+  resources :municipes, except: :destroy
 end

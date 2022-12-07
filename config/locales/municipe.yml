@@ -1,0 +1,35 @@
+pt-BR:
+  activerecord:
+    models:
+      municipe:
+        one: Munícipe
+        other: Munícipes
+    
+    messages:
+      municipe:
+        create:
+          success: Cadastro realizado com sucesso!
+        update:
+          success: Cadastro atualizado com sucesso!
+    
+    attributes:
+      municipe:
+        name: Nome
+        cpf: CPF
+        cns: CNS
+        birth_date: Data de Nascimento
+        email: E-mail
+        photo: Foto
+        status: Status
+        phone: Telefone
+        statuses:
+          active: "Ativo"
+          inactive: "Inativo"
+      address:
+        zipcode: CEP
+        street: Logradouro
+        neighborhood: Bairro
+        complement: Complemento
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE

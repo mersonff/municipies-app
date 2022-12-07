@@ -7,8 +7,9 @@ FactoryBot.define do
     cns { '200055910360003' }
     email { Faker::Internet.email }
     birth_date { Faker::Date.birthday(min_age: 1, max_age: 110) }
-    phone { Faker::PhoneNumber.cell_phone }
-    photo { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/municipe.jpg'), 'image/jpg') }
+    phone { '+55 (88) 99778-7269' }
+    photo { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/municipe.jpg'), 'image/jpeg') }
     status { :active }
+    address { build(:address) }
   end
 end

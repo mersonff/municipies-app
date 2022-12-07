@@ -1,24 +1,33 @@
-# README
+# Municipes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 🚀 Instalando Municipes
 
-Things you may want to cover:
+Para instalar o projeto, siga estas etapas:
 
-* Ruby version
+Setando o .env
+```
+  abra o arquivo .env_sample e adicione suas informações
+```
 
-* System dependencies
+```
+docker-compose up -d
+```
 
-* Configuration
+## ☕ Usando
 
-* Database creation
+No terminal
+```
+rails s && sidekiq
+```
 
-* Database initialization
+## Testes
 
-* How to run the test suite
+No terminal
+```
+rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## OBS
 
-* Deployment instructions
+Minha conta trial da Twilio encontra-se expirada, para que o envio de sms funcione, é preciso adicionar dados válidos no env.
 
-* ...
