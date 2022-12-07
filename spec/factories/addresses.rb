@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :address do
-    municipe { nil }
-    zipcode { "MyString" }
-    street { "MyString" }
-    complement { "MyString" }
-    neighborhood { "MyString" }
-    city { "MyString" }
-    uf { "MyString" }
-    ibge_code { "MyString" }
+    zipcode { '63960-000' }
+    street { Faker::Address.street_name }
+    complement { Faker::Address.secondary_address }
+    neighborhood { Faker::Address.community }
+    city { Faker::Address.city }
+    uf { Faker::Address.state_abbr }
+    ibge_code { '15521' }
   end
 end

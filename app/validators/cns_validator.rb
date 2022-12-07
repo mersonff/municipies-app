@@ -8,14 +8,18 @@ class CnsValidator < ActiveModel::EachValidator
 
     object.errors.add(attribute, :cns_invalid) if %w[3 4 5 6].include?(value[0])
 
+    check_cns(object, attribute, value)
+  end
+
+  private
+
+  def check_cns(object, attribute, value)
     if %w[1 2].include?(value[0])
       object.errors.add(attribute, :cns_invalid) unless cns_valid?(value)
     else
       object.errors.add(attribute, :cns_invalid) unless cns_provisional_valid?(value)
     end
   end
-
-  private
 
   def cns_valid?(cns)
     number = cns.to_s[0..10]

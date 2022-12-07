@@ -1,3 +1,5 @@
+<%= turbo_stream_from "municipes" %>
+
 <div class="container">
   <div class="header">
     <h1><%= I18n.t('activerecord.models.municipe.other') %></h1>
@@ -10,7 +12,6 @@
   <%= turbo_frame_tag Municipe.new %>
 
   <%= turbo_frame_tag "municipes" do %>
-    <br>
     <%= render "municipes/empty_state" %>
     <%= render @municipes %>
   <% end %>

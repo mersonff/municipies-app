@@ -45,15 +45,15 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Sass to process CSS
-gem "cssbundling-rails"
+gem 'cssbundling-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
 gem 'active_storage_validations'
-gem 'dotenv-rails', '~> 2.7.6'
 gem 'cpf_cnpj', '~> 0.5.0'
-gem "simple_form", "~> 5.1.0"
+gem 'dotenv-rails', '~> 2.7.6'
+gem 'image_processing', '~> 1.2'
 gem 'sidekiq', '~> 6.2.2'
+gem 'simple_form', '~> 5.1.0'
 gem 'twilio-ruby'
 
 group :development, :test do

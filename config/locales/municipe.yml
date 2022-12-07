@@ -2,8 +2,15 @@ pt-BR:
   activerecord:
     models:
       municipe:
-        one: "Munícipe"
-        other: "Munícipes"
+        one: Munícipe
+        other: Munícipes
+    
+    messages:
+      municipe:
+        create:
+          success: Cadastro realizado com sucesso!
+        update:
+          success: Cadastro atualizado com sucesso!
     
     attributes:
       municipe:

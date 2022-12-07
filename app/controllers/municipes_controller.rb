@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MunicipesController < ApplicationController
   before_action :set_municipe, only: %i[show edit update]
 
@@ -12,28 +14,28 @@ class MunicipesController < ApplicationController
     @municipe.build_address
   end
 
+  def edit; end
+
   def create
     @municipe = Municipe.new(municipe_params)
-
     if @municipe.save
+      message = I18n.t('activerecord.messages.municipe.create.success')
+
       respond_to do |format|
-        format.html { redirect_to municipes_path, notice: "municipe was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "municipe was successfully created." }
-        TwilioMessenger.new("Olá, #{@municipe.name}, seu cadastro foi realizado com sucesso!", @municipe.phone).call
+        format.html { redirect_to municipes_path, notice: message, status: :ok }
+        format.turbo_stream { flash.now[:notice] = message }
       end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
-
   def update
+    message = I18n.t('activerecord.messages.municipe.update.success')
     if @municipe.update(municipe_params)
       respond_to do |format|
-        format.html { redirect_to municipes_path, notice: "municipe was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "municipe was successfully updated." }
-        TwilioMessenger.new("Olá, #{@municipe.name}, seu cadastro foi atualizado com sucesso!", @municipe.phone).call
+        format.html { redirect_to municipes_path, notice: message, status: :ok }
+        format.turbo_stream { flash.now[:notice] = message }
       end
     else
       render :edit, status: :unprocessable_entity

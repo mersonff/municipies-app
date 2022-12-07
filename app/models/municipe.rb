@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Municipe < ApplicationRecord
   has_one_attached :photo
 
@@ -18,6 +20,7 @@ class Municipe < ApplicationRecord
 
   after_create :send_welcome_email
   after_save :send_info_changed_email
+  after_save :send_sms
 
   def self.translated_statuses
     statuses.keys.map { |status| [I18n.t("activerecord.attributes.municipe.statuses.#{status}"), status] }
@@ -31,5 +34,9 @@ class Municipe < ApplicationRecord
 
   def send_info_changed_email
     MunicipeMailer.with(municipe: self).info_changed.deliver_later
+  end
+
+  def send_sms
+    TwilioMessenger.new("Olá, #{name}, seu cadastro foi criado/atualizado com sucesso!", phone).call
   end
 end

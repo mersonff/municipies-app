@@ -1,9 +1,9 @@
 <div class="empty-state empty-state--only-child">
   <p class="empty-state__text">
-    You don't have any municipes yet!
+    Nenhum munícipe cadastrado
   </p>
 
-  <%= link_to "Add municipe",
+  <%= link_to I18n.t('helpers.submit.municipe.new_title'),
               new_municipe_path,
               class: "btn btn--primary",
               data: { turbo_frame: dom_id(Municipe.new) } %>
