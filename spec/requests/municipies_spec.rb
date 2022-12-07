@@ -16,6 +16,19 @@ RSpec.describe 'Municipies' do
     it 'returns all municipies' do
       expect(response.body).to include(*municipes.map(&:name))
     end
+
+    context 'when query is present' do
+      let(:request) { get municipes_path, params: { query: municipes.first.name } }
+
+      it 'returns http success' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'returns filtered municipies', :aggregate_failures do
+        expect(response.body).to include(municipes.first.name)
+        expect(response.body).not_to include(*municipes.second.name)
+      end
+    end
   end
 
   describe 'GET /municipies/:id' do

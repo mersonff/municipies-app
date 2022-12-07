@@ -37,6 +37,6 @@ class Municipe < ApplicationRecord
   end
 
   def send_sms
-    TwilioMessenger.new("Olá, #{name}, seu cadastro foi criado/atualizado com sucesso!", phone).call
+    # TwilioMessenger.new("Olá, #{name}, seu cadastro foi criado/atualizado com sucesso!", phone).call
   end
 end
