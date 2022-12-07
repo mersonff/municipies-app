@@ -27,3 +27,7 @@ No terminal
 rspec
 ```
 
+## OBS
+
+Minha conta trial da Twilio encontra-se expirada, para que o envio de sms funcione, é preciso adicionar dados válidos no env.
+
