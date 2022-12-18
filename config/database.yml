@@ -5,12 +5,13 @@ default: &default
 
 development:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>_development
+  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>
 
 test: &test
   <<: *default
-  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>_test
+  url: <%= ENV['DATABASE_URL'] || ENV['REMOTE_DATABASE_URL'] %>
 
 production:
+  <<: *default
   url: <%= ENV['REMOTE_DATABASE_URL'] %>
 

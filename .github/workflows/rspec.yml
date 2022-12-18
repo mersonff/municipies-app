@@ -20,7 +20,11 @@ jobs:
           POSTGRES_DB: hackathon_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis
     steps:
+      - name: Start Redis
+        run: redis-server
       - name: Checkout code
         uses: actions/checkout@v3
 

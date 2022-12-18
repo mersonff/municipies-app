@@ -20,7 +20,7 @@ services:
     container_name: app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: development.Dockerfile
     depends_on:
       - postgres
       - redis
@@ -40,7 +40,7 @@ services:
     container_name: app-migrations
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: development.Dockerfile
     depends_on:
       - postgres
       - redis
@@ -60,7 +60,7 @@ services:
   sidekiq:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: development.Dockerfile
     depends_on:
       - app
       - postgres
